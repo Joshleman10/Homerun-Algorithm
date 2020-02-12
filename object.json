@@ -1,0 +1,668 @@
+[
+    {
+        "Name": "Alonso, Pete NYM ",
+        "Stats": {
+            "AB": 597,
+            "Runs": 103,
+            "Hits": 155,
+            "Doubles": 30,
+            "Triples": 2,
+            "HomeRuns": 53,
+            "RBIs": 120,
+            "Slug": 0.583,
+            "OPS": 0.941
+        }
+    },
+    {
+        "Name": "Suárez, Eugenio CIN",
+        "Stats": {
+            "AB": 575,
+            "Runs": 87,
+            "Hits": 156,
+            "Doubles": 22,
+            "Triples": 2,
+            "HomeRuns": 49,
+            "RBIs": 103,
+            "Slug": 0.572,
+            "OPS": 0.93
+        }
+    },
+    {
+        "Name": "Soler, Jorge KC",
+        "Stats": {
+            "AB": 589,
+            "Runs": 95,
+            "Hits": 156,
+            "Doubles": 33,
+            "Triples": 1,
+            "HomeRuns": 48,
+            "RBIs": 117,
+            "Slug": 0.569,
+            "OPS": 0.923
+        }
+    },
+    {
+        "Name": "Bellinger, Cody LAD",
+        "Stats": {
+            "AB": 558,
+            "Runs": 121,
+            "Hits": 170,
+            "Doubles": 34,
+            "Triples": 3,
+            "HomeRuns": 47,
+            "RBIs": 115,
+            "Slug": 0.629,
+            "OPS": 1.035
+        }
+    },
+    {
+        "Name": "Trout, Mike LAA",
+        "Stats": {
+            "AB": 470,
+            "Runs": 110,
+            "Hits": 137,
+            "Doubles": 27,
+            "Triples": 2,
+            "HomeRuns": 45,
+            "RBIs": 104,
+            "Slug": 0.645,
+            "OPS": 1.083
+        }
+    },
+    {
+        "Name": "Yelich, Christian MIL ",
+        "Stats": {
+            "AB": 489,
+            "Runs": 100,
+            "Hits": 161,
+            "Doubles": 29,
+            "Triples": 3,
+            "HomeRuns": 44,
+            "RBIs": 97,
+            "Slug": 0.671,
+            "OPS": 1.10
+        }
+    },
+    {
+    "Name": "Cruz, Nelson MIN",
+    "Stats": {
+        "AB": 454,
+        "Runs": 81,
+        "Hits": 141,
+        "Doubles": 26,
+        "Triples": 0,
+        "HomeRuns": 41,
+        "RBIs": 108,
+        "Slug": 0.639,
+        "OPS": 1.031
+    }
+},
+{
+        "Name": "Arenado, Nolan COL",
+    "Stats": {
+        "AB": 588,
+        "Runs": 102,
+        "Hits": 185,
+        "Doubles": 31,
+        "Triples": 2,
+        "HomeRuns": 41,
+        "RBIs": 118,
+        "Slug": 0.583,
+        "OPS": 0.962
+    }
+},
+{
+        "Name": "Bregman, Alex HOU",
+    "Stats": {
+        "AB": 554,
+        "Runs": 122,
+        "Hits": 164,
+        "Doubles": 37,
+        "Triples": 2,
+        "HomeRuns": 41,
+        "RBIs": 112,
+        "Slug": 0.592,
+        "OPS": 1.015
+    }
+},
+{
+        "Name": "Acuña Jr., Ronald ATL ",
+    "Stats": {
+        "AB": 626,
+        "Runs": 127,
+        "Hits": 175,
+        "Doubles": 22,
+        "Triples": 2,
+        "HomeRuns": 41,
+        "RBIs": 101,
+        "Slug": 0.518,
+        "OPS": 0.883
+    }
+},
+{
+        "Name": "Springer, George HOU  ",
+    "Stats": {
+        "AB": 479,
+        "Runs": 96,
+        "Hits": 140,
+        "Doubles": 20,
+        "Triples": 3,
+        "HomeRuns": 39,
+        "RBIs": 96,
+        "Slug": 0.591,
+        "OPS": 0.974
+    }
+},
+{
+        "Name": "Freeman, Freddie ATL  ",
+    "Stats": {
+        "AB": 597,
+        "Runs": 113,
+        "Hits": 176,
+        "Doubles": 34,
+        "Triples": 2,
+        "HomeRuns": 38,
+        "RBIs": 121,
+        "Slug": 0.549,
+        "OPS": 0.93
+    }
+},
+{
+        "Name": "Schwarber, Kyle CHC",
+    "Stats": {
+        "AB": 529,
+        "Runs": 82,
+        "Hits": 132,
+        "Doubles": 29,
+        "Triples": 3,
+        "HomeRuns": 38,
+        "RBIs": 92,
+        "Slug": 0.531,
+        "OPS": 0.870
+    }
+},
+{
+        "Name": "Torres, Gleyber NYY",
+    "Stats": {
+        "AB": 546,
+        "Runs": 96,
+        "Hits": 152,
+        "Doubles": 26,
+        "Triples": 0,
+        "HomeRuns": 38,
+        "RBIs": 90,
+        "Slug": 0.535,
+        "OPS": 0.872
+    }
+},
+{    
+    "Name": "Donaldson, Josh MIN",
+    "Stats": {
+        "AB": 549,
+        "Runs": 96,
+        "Hits": 142,
+        "Doubles": 33,
+        "Triples": 0,
+        "HomeRuns": 37,
+        "RBIs": 94,
+        "Slug": 0.521,
+        "OPS": 0.900
+    }
+},
+{    
+    "Name": "Reyes, Franmil CLE",
+    "Stats": {
+        "AB": 494,
+        "Runs": 69,
+        "Hits": 123,
+        "Doubles": 19,
+        "Triples": 0,
+        "HomeRuns": 37,
+        "RBIs": 81,
+        "Slug": 0.512,
+        "OPS": 0.822
+    }
+},
+{    "Name": "Bell, Josh PIT",
+    "Stats": {
+        "AB": 527,
+        "Runs": 94,
+        "Hits": 146,
+        "Doubles": 37,
+        "Triples": 3,
+        "HomeRuns": 37,
+        "RBIs": 116,
+        "Slug": 0.569,
+        "OPS": 0.936
+    }
+},
+{    "Name": "Martinez, J.D. BOS",
+    "Stats": {
+        "AB": 575,
+        "Runs": 98,
+        "Hits": 175,
+        "Doubles": 33,
+        "Triples": 2,
+        "HomeRuns": 36,
+        "RBIs": 105,
+        "Slug": 0.557,
+        "OPS": 0.94
+    }
+},
+{    "Name": "Olson, Matt OAK",
+    "Stats": {
+        "AB": 483,
+        "Runs": 73,
+        "Hits": 129,
+        "Doubles": 26,
+        "Triples": 0,
+        "HomeRuns": 36,
+        "RBIs": 91,
+        "Slug": 0.545,
+        "OPS": 0.896
+    }
+},
+{    "Name": "Pederson, Joc LAD",
+    "Stats": {
+        "AB": 450,
+        "Runs": 83,
+        "Hits": 112,
+        "Doubles": 16,
+        "Triples": 3,
+        "HomeRuns": 36,
+        "RBIs": 74,
+        "Slug": 0.538,
+        "OPS": 0.877
+    }
+},
+{    "Name": "Kepler, Max MIN",
+    "Stats": {
+        "AB": 524,
+        "Runs": 98,
+        "Hits": 132,
+        "Doubles": 32,
+        "Triples": 0,
+        "HomeRuns": 36,
+        "RBIs": 90,
+        "Slug": 0.519,
+        "OPS": 0.855
+    }
+},
+{    "Name": "Chapman, Matt OAK",
+    "Stats": {
+        "AB": 583,
+        "Runs": 102,
+        "Hits": 145,
+        "Doubles": 36,
+        "Triples": 3,
+        "HomeRuns": 36,
+        "RBIs": 91,
+        "Slug": 0.506,
+        "OPS": 0.848
+    }
+},
+{    "Name": "Escobar, Eduardo ARI  ",
+    "Stats": {
+        "AB": 636,
+        "Runs": 94,
+        "Hits": 171,
+        "Doubles": 29,
+        "Triples": 10,
+        "HomeRuns": 35,
+        "RBIs": 118,
+        "Slug": 0.511,
+        "OPS": 0.83
+    }
+},
+{    "Name": "Moustakas, Mike CIN",
+    "Stats": {
+        "AB": 523,
+        "Runs": 80,
+        "Hits": 133,
+        "Doubles": 30,
+        "Triples": 1,
+        "HomeRuns": 35,
+        "RBIs": 87,
+        "Slug": 0.516,
+        "OPS": 0.845
+    }
+},
+{    "Name": "Harper, Bryce PHI",
+    "Stats": {
+        "AB": 573,
+        "Runs": 98,
+        "Hits": 149,
+        "Doubles": 36,
+        "Triples": 1,
+        "HomeRuns": 35,
+        "RBIs": 114,
+        "Slug": 0.510,
+        "OPS": 0.882
+    }
+},
+{    "Name": "Story, Trevor COL",
+    "Stats": {
+        "AB": 588,
+        "Runs": 111,
+        "Hits": 173,
+        "Doubles": 38,
+        "Triples": 5,
+        "HomeRuns": 35,
+        "RBIs": 85,
+        "Slug": 0.554,
+        "OPS": 0.917
+    }
+},
+{    "Name": "Muncy, Max LAD",
+    "Stats": {
+        "AB": 487,
+        "Runs": 101,
+        "Hits": 122,
+        "Doubles": 22,
+        "Triples": 1,
+        "HomeRuns": 35,
+        "RBIs": 98,
+        "Slug": 0.515,
+        "OPS": 0.889
+    }
+},
+{    "Name": "Mancini, Trey BAL",
+    "Stats": {
+        "AB": 602,
+        "Runs": 106,
+        "Hits": 175,
+        "Doubles": 38,
+        "Triples": 2,
+        "HomeRuns": 35,
+        "RBIs": 97,
+        "Slug": 0.535,
+        "OPS": 0.899
+    }
+},
+{    "Name": "Encarnacion,Ed CWS",
+    "Stats": {
+        "AB": 418,
+        "Runs": 81,
+        "Hits": 102,
+        "Doubles": 18,
+        "Triples": 0,
+        "HomeRuns": 34,
+        "RBIs": 86,
+        "Slug": 0.531,
+        "OPS": 0.875
+    }
+},
+{    "Name": "Santana, Carlos CLE",
+    "Stats": {
+        "AB": 573,
+        "Runs": 110,
+        "Hits": 161,
+        "Doubles": 30,
+        "Triples": 1,
+        "HomeRuns": 34,
+        "RBIs": 93,
+        "Slug": 0.515,
+        "OPS": 0.912
+    }
+},
+{    "Name": "Goldschmidt,Paul STL",
+    "Stats": {
+        "AB": 597,
+        "Runs": 97,
+        "Hits": 155,
+        "Doubles": 25,
+        "Triples": 1,
+        "HomeRuns": 34,
+        "RBIs": 97,
+        "Slug": 0.476,
+        "OPS": 0.822
+    }
+},
+{    "Name": "Rendon, Anthony LAA",
+    "Stats": {
+        "AB": 545,
+        "Runs": 117,
+        "Hits": 174,
+        "Doubles": 44,
+        "Triples": 3,
+        "HomeRuns": 34,
+        "RBIs": 126,
+        "Slug": 0.598,
+        "OPS": 1.010
+    }
+},
+{    "Name": "Sánchez, Gary NYY",
+    "Stats": {
+        "AB": 396,
+        "Runs": 62,
+        "Hits": 92,
+        "Doubles": 21,
+        "Triples": 3,
+        "HomeRuns": 47,
+        "RBIs": 70,
+        "Slug": 0.525,
+        "OPS": 0.841
+    }
+},
+{    "Name": "Sanó, Miguel MIN",
+    "Stats": {
+        "AB": 380,
+        "Runs": 76,
+        "Hits": 94,
+        "Doubles": 9,
+        "Triples": 3,
+        "HomeRuns": 47,
+        "RBIs": 90,
+        "Slug": 0.576,
+        "OPS": 0.922
+    }
+},
+{    "Name": "Soto, Juan WSH",
+    "Stats": {
+        "AB": 542,
+        "Runs": 110,
+        "Hits": 153,
+        "Doubles": 32,
+        "Triples": 5,
+        "HomeRuns": 34,
+        "RBIs": 110,
+        "Slug": 0.548,
+        "OPS": 0.949
+    }
+},
+{    "Name": "Calhoun, Kole ARI",
+    "Stats": {
+        "AB": 552,
+        "Runs": 92,
+        "Hits": 128,
+        "Doubles": 29,
+        "Triples": 1,
+        "HomeRuns": 33,
+        "RBIs": 74,
+        "Slug": 0.467,
+        "OPS": 0.792
+    }
+},
+{    "Name": "Bogaerts, Xander BOS",
+    "Stats": {
+        "AB": 614,
+        "Runs": 110,
+        "Hits": 190,
+        "Doubles": 52,
+        "Triples": 0,
+        "HomeRuns": 33,
+        "RBIs": 117,
+        "Slug": 0.555,
+        "OPS": 0.939
+    }
+},
+{    "Name": "Semien, Marcus OAK    ",
+    "Stats": {
+        "AB": 657,
+        "Runs": 123,
+        "Hits": 187,
+        "Doubles": 43,
+        "Triples": 7,
+        "HomeRuns": 33,
+        "RBIs": 92,
+        "Slug": 0.522,
+        "OPS": 0.891
+    }
+},
+{    "Name": "Abreu, José CWS",
+    "Stats": {
+        "AB": 634,
+        "Runs": 85,
+        "Hits": 180,
+        "Doubles": 38,
+        "Triples": 1,
+        "HomeRuns": 33,
+        "RBIs": 123,
+        "Slug": 0.503,
+        "OPS": 0.833
+    }
+},
+{    "Name": "Meadows, Austin TB",
+    "Stats": {
+        "AB": 530,
+        "Runs": 83,
+        "Hits": 154,
+        "Doubles": 29,
+        "Triples": 7,
+        "HomeRuns": 33,
+        "RBIs": 89,
+        "Slug": 0.558,
+        "OPS": 0.922
+    }
+},
+{    "Name": "Renfroe, Hunter TB",
+    "Stats": {
+        "AB": 440,
+        "Runs": 64,
+        "Hits": 95,
+        "Doubles": 9,
+        "Triples": 3,
+        "HomeRuns": 36,
+        "RBIs": 45,
+        "Slug": 0.489,
+        "OPS": 0.778
+    }
+},
+{    "Name": "Conforto, Mich NYM",
+    "Stats": {
+        "AB": 549,
+        "Runs": 90,
+        "Hits": 141,
+        "Doubles": 29,
+        "Triples": 1,
+        "HomeRuns": 33,
+        "RBIs": 92,
+        "Slug": 0.494,
+        "OPS": 0.857
+    }
+},
+{    "Name": "Blackmon,Charlie COL",
+    "Stats": {
+        "AB": 580,
+        "Runs": 112,
+        "Hits": 182,
+        "Doubles": 42,
+        "Triples": 7,
+        "HomeRuns": 32,
+        "RBIs": 86,
+        "Slug": 0.576,
+        "OPS": 0.940
+    }
+},
+{    "Name": "Machado, Manny SD",
+    "Stats": {
+        "AB": 587,
+        "Runs": 81,
+        "Hits": 150,
+        "Doubles": 21,
+        "Triples": 2,
+        "HomeRuns": 32,
+        "RBIs": 85,
+        "Slug": 0.462,
+        "OPS": 0.796
+    }
+},
+{    "Name": "Rosario, Eddie MIN",
+    "Stats": {
+        "AB": 562,
+        "Runs": 91,
+        "Hits": 155,
+        "Doubles": 28,
+        "Triples": 1,
+        "HomeRuns": 32,
+        "RBIs": 109,
+        "Slug": 0.500,
+        "OPS": 0.800
+    }
+},
+{    "Name": "Marte, Ketel ARI",
+    "Stats": {
+        "AB": 569,
+        "Runs": 97,
+        "Hits": 187,
+        "Doubles": 36,
+        "Triples": 9,
+        "HomeRuns": 32,
+        "RBIs": 92,
+        "Slug": 0.592,
+        "OPS": 0.981
+    }
+},
+{    "Name": "Lindor,Francisco CLE",
+    "Stats": {
+        "AB": 598,
+        "Runs": 101,
+        "Hits": 170,
+        "Doubles": 40,
+        "Triples": 2,
+        "HomeRuns": 32,
+        "RBIs": 74,
+        "Slug": 0.518,
+        "OPS": 0.853
+    }
+},
+{    "Name": "Devers, Rafael BOS",
+    "Stats": {
+        "AB": 647,
+        "Runs": 129,
+        "Hits": 201,
+        "Doubles": 54,
+        "Triples": 4,
+        "HomeRuns": 32,
+        "RBIs": 115,
+        "Slug": 0.555,
+        "OPS": 0.916
+    }
+},
+{    "Name": "Altuve, Jose HOU",
+    "Stats": {
+        "AB": 500,
+        "Runs": 89,
+        "Hits": 149,
+        "Doubles": 27,
+        "Triples": 3,
+        "HomeRuns": 31,
+        "RBIs": 74,
+        "Slug": 0.550,
+        "OPS": 0.903
+    }
+},
+{    "Name": "Bryant, Kris CHC",
+    "Stats": {
+        "AB": 543,
+        "Runs": 108,
+        "Hits": 153,
+        "Doubles": 35,
+        "Triples": 1,
+        "HomeRuns": 31,
+        "RBIs": 77,
+        "Slug": 0.521,
+        "OPS": 0.903
+    }
+}
+]
