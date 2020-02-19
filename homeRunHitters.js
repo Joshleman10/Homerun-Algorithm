@@ -1,7 +1,8 @@
 const players = require('./object.json');
+const inquirer = require('inquirer');
 
 const groupSelections =
-[{
+{
     "groupOne": {
         "names": [
             "Arenado, Nolan COL",
@@ -31,12 +32,27 @@ const groupSelections =
             "Rendon, Anthony LAA"
         ]
     }
-}]
+}
+
+let possibleTopPicks = {
+    "groupOne": {
+        "names": []
+    },
+    "groupTwo": {
+        "names": []
+    },
+    "groupThree": {
+        "names": []
+    }
+}
 
 let prospects = [];
-let onePlayers = [];
-let twoPlayers = [];
-let threePlayers = [];
+let firstGroupStats = [];
+let secondGroupStats = [];
+let thirdGroupStats = [];
+let hr = 0;
+let ab = 0;
+let ops = 0;
 
 players.map(item => {
     if (item.Stats.AB > 550 && item.Stats.HomeRuns > 40) {
@@ -44,29 +60,66 @@ players.map(item => {
     }
 })
 
+compareToGroups(prospects);
+
 function compareToGroups(itemsToCompare) {
 
     itemsToCompare.map(item => {
-        if (groupSelections[0].includes(item)) {
-            onePlayers.push(item)
+        if (groupSelections.groupOne.names.includes(item)) {
+            possibleTopPicks.groupOne.names.push(item)
         }
-        else if (groupSelections[1].includes(item)) {
-            twoPlayers.push(item)
+        else if (groupSelections.groupTwo.names.includes(item)) {
+            possibleTopPicks.groupTwo.names.push(item)
         }
-        else if (groupSelections[2].includes(item)) {
-            threePlayers.push(item)
+        else if (groupSelections.groupThree.names.includes(item)) {
+            possibleTopPicks.groupThree.names.push(item)
         }
     })
+    addStats(possibleTopPicks.groupOne.names, possibleTopPicks.groupTwo.names, possibleTopPicks.groupThree.names)
 }
 
-compareToGroups(prospects);
+function addStats(g1, g2, g3) {
 
-let oneFormat = "Group 1 Players: " + onePlayers
-let twoFormat = "Group 1 Players: " + twoPlayers
-let threeFormat = "Group 1 Players: " + threePlayers
+    players.map(item => {
+        if (g1.includes(item.Name)) {
+            firstGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB)
+        }
+        else if (g2.includes(item.Name)) {
+            secondGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB)
+        }
+        else if (g3.includes(item.Name)) {
+            thirdGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB)
+        }
+    })
 
-console.log(oneFormat + " " + twoFormat + " " + threeFormat)
+    // playerSelector(firstGroupStats, secondGroupStats, thirdGroupStats)
+}
 
-// let lastNames = prospects.map(item =>{
-//     return item.split(",").shift()
-// })
+    // function playerSelector(g1, g2, g3){
+
+    // }
+
+inquirer.prompt([
+
+        {
+            message: "At least how many HR do you want your picks to have from last season?",
+            type: "list",
+            name: "HR",
+            choices: [45, 40, 35, "Not Important"]
+        }, {
+            message: "At least how many at bats do you want your picks to have from last season?",
+            type: "list",
+            name: "AB",
+            choices: [600, 550, 500, "Not Important"]
+        },
+        {
+            message: "At least how high would you like your picks OPS to be?",
+            type: "list",
+            name: "OPS",
+            choices: [1.000, 0.900, 0.800, "Not Important"]
+        }
+
+]).then(function (answers) {
+    answers.HR ? hr=answers.HR : 0
+    console.log("homeruns: " + hr)
+})
