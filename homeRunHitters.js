@@ -54,13 +54,16 @@ let hr = 0;
 let ab = 0;
 let ops = 0;
 
-players.map(item => {
-    if (item.Stats.AB > 550 && item.Stats.HomeRuns > 40) {
-        prospects.push(item.Name)
-    }
-})
+function pickPreferences() {
 
-compareToGroups(prospects);
+    players.map(item => {
+        if (item.Stats.AB > ab && item.Stats.HomeRuns > hr) {
+            prospects.push(item.Name)
+        }
+    })
+
+    compareToGroups(prospects);
+}
 
 function compareToGroups(itemsToCompare) {
 
@@ -82,44 +85,66 @@ function addStats(g1, g2, g3) {
 
     players.map(item => {
         if (g1.includes(item.Name)) {
-            firstGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB)
+            firstGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS)
         }
         else if (g2.includes(item.Name)) {
-            secondGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB)
+            secondGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS)
         }
         else if (g3.includes(item.Name)) {
-            thirdGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB)
+            thirdGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS)
         }
     })
-
-    // playerSelector(firstGroupStats, secondGroupStats, thirdGroupStats)
+    playerSelector(firstGroupStats, secondGroupStats, thirdGroupStats)
 }
 
-    // function playerSelector(g1, g2, g3){
-
-    // }
-
-inquirer.prompt([
-
+function playerSelector(g1, g2, g3) {
+    inquirer.prompt([
         {
-            message: "At least how many HR do you want your picks to have from last season?",
+            message: "Which player do you want from GROUP 1 that matches your preferred specifications?",
             type: "list",
-            name: "HR",
-            choices: [45, 40, 35, "Not Important"]
+            name: "G1",
+            choices: g1.map(item => item)
         }, {
-            message: "At least how many at bats do you want your picks to have from last season?",
+            message: "Which player do you want from GROUP 2 that matches your preferred specifications?",
             type: "list",
-            name: "AB",
-            choices: [600, 550, 500, "Not Important"]
+            name: "G2",
+            choices: g2.map(item => item)
         },
         {
-            message: "At least how high would you like your picks OPS to be?",
+            message: "Which player do you want from GROUP 2 that matches your preferred specifications?",
             type: "list",
-            name: "OPS",
-            choices: [1.000, 0.900, 0.800, "Not Important"]
+            name: "G3",
+            choices: g3.map(item => item)
         }
 
+    ]).then(function (answers) {
+        console.log("Your top 3 players are as follows: ")
+        console.log(answers)
+    })
+}
+
+inquirer.prompt([
+    {
+        message: "At least how many HR do you want your picks to have from last season?",
+        type: "list",
+        name: "HR",
+        choices: [40, 35, 30, 25]
+    }, {
+        message: "At least how many at bats do you want your picks to have from last season?",
+        type: "list",
+        name: "AB",
+        choices: [550, 525, 500, 475]
+    },
+    {
+        message: "At least how high would you like your picks OPS to be?",
+        type: "list",
+        name: "OPS",
+        choices: [1.0, 0.950, 0.900, 0.850]
+    }
+
 ]).then(function (answers) {
-    answers.HR ? hr=answers.HR : 0
-    console.log("homeruns: " + hr)
+    answers.HR ? hr = answers.HR : 0
+    answers.AB ? ab = answers.AB : 0
+    answers.OPS ? ops = answers.OPS : 0
+    pickPreferences()
 })
