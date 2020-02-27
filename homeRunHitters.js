@@ -5,49 +5,33 @@ const players = require('./object.json');
 const inquirer = require('inquirer');
 
 const groupSelections =
-{
-    "groupOne": {
-        "names": [
-            "Arenado, Nolan COL",
-            "Bellinger, Cody LAD",
-            "Yelich, Christian MIL",
-            "Alonso, Pete NYM",
-            "Acuña Jr., Ronald ATL",
-            "Schwarber, Kyle CHC"
-        ]
-    }, "groupTwo": {
-        "names": [
-            "Trout, Mike LAA",
-            "Bregman, Alex HOU",
-            "Lindor,Francisco CLE",
-            "Donaldson, Josh MIN",
-            "Judge, Aaron NYY",
-            "Renfroe, Hunter TB"
-        ]
-    },
-    "groupThree": {
-        "names": [
-            "Soto, Juan WSH",
-            "Harper, Bryce PHI",
-            "Bell, Josh PIT",
-            "Soler, Jorge KC",
-            "Suárez, Eugenio CIN",
-            "Rendon, Anthony LAA"
-        ]
-    }
-}
+    [[
+        "Arenado, Nolan COL",
+        "Bellinger, Cody LAD",
+        "Yelich, Christian MIL",
+        "Alonso, Pete NYM",
+        "Acuña Jr., Ronald ATL",
+        "Schwarber, Kyle CHC"
+    ]
+        ,
+    [
+        "Trout, Mike LAA",
+        "Bregman, Alex HOU",
+        "Lindor,Francisco CLE",
+        "Donaldson, Josh MIN",
+        "Judge, Aaron NYY",
+        "Renfroe, Hunter TB"
+    ]
+        , [
+        "Soto, Juan WSH",
+        "Harper, Bryce PHI",
+        "Bell, Josh PIT",
+        "Soler, Jorge KC",
+        "Suárez, Eugenio CIN",
+        "Rendon, Anthony LAA"
+    ]]
 
-let possibleTopPicks = {
-    "groupOne": {
-        "names": []
-    },
-    "groupTwo": {
-        "names": []
-    },
-    "groupThree": {
-        "names": []
-    }
-}
+let possibleTopPicks = [[], [], []];
 
 let fullTeam = [];
 let prospects = [];
@@ -58,19 +42,30 @@ let hr = 0;
 let ab = 0;
 let ops = 0;
 let remainingPicks = [];
-const grpSelArr = [groupSelections.groupOne.names, groupSelections.groupTwo.names, groupSelections.groupThree.names];
+const grpSelArr = [groupSelections[0], groupSelections[1], groupSelections[2]];
 const mergedGrpSelArr = [].concat.apply([], grpSelArr);
 players.forEach(item => {
     mergedGrpSelArr.includes(item.Name) ? "" : remainingPicks.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS);
 })
+//write functions to select top hitters
+function mostHR(hitters){
+    hitters.Stats.HomeRuns.map(item => {values.sort((a,b) => b-a).slice(0,5)})
+}
+function mostAB(hitters){
+    hitters.Stats.AB.map(item => {values.sort((a,b) => b-a).slice(0,5)})
+}
+function mostOPS(hitters){
+    hitters.Stats.OPS.map(item => {values.sort((a,b) => b-a).slice(0,5)})
+}
 
 //Asking the user to set parameters for the players they would like to select
+function initialInquiry(){
 inquirer.prompt([
     {
         message: "At least how many HR do you want your picks to have from last season?",
         type: "list",
         name: "HR",
-        choices: [40, 35, 30, 25]
+        choices: 
     }, {
         message: "At least how many at bats do you want your picks to have from last season?",
         type: "list",
@@ -90,6 +85,7 @@ inquirer.prompt([
     answers.OPS ? ops = answers.OPS : 0
     pickPreferences(players)
 })
+}
 
 //Creating prospects using the preferred specifications set by the first round of inquirer questions
 function pickPreferences(playersToSort) {
@@ -104,36 +100,54 @@ function pickPreferences(playersToSort) {
 //Comparing prospects that meet the user's preferred player specifications
 function compareToGroups(topProspects) {
     topProspects.map(item => {
-        if (groupSelections.groupOne.names.includes(item)) {
-            possibleTopPicks.groupOne.names.push(item)
+        if (groupSelections[0].includes(item)) {
+            possibleTopPicks[0].push(item)
         }
-        else if (groupSelections.groupTwo.names.includes(item)) {
-            possibleTopPicks.groupTwo.names.push(item)
+        else if (groupSelections[1].includes(item)) {
+            possibleTopPicks[1].push(item)
         }
-        else if (groupSelections.groupThree.names.includes(item)) {
-            possibleTopPicks.groupThree.names.push(item)
+        else if (groupSelections[2].includes(item)) {
+            possibleTopPicks[2].push(item)
         }
     })
-    addStats(possibleTopPicks.groupOne.names, possibleTopPicks.groupTwo.names, possibleTopPicks.groupThree.names)
+    groupContentValidator();
+}
+
+//Ensuring all arrays have a value, if not, return the entire group for user discernment
+function groupContentValidator(){
+        let ptpLenthgs = possibleTopPicks.map(item => item.length)
+        if (ptpLenthgs.includes(0)) {
+            possibleTopPicks.map((group, index) => {
+                if (group.length === 0) {
+                    groupSelections[index].map(item => {
+                        possibleTopPicks[index].push(item);
+                    })
+                    console.log("*****No players in group #" + (index+1) + " matched the criterea you selected. Returning all of group #" + (index+1) + " for evaluation*****")
+                    addStats(possibleTopPicks)
+                }
+                else { return }
+            })
+        }
+        else { addStats(possibleTopPicks) }
 }
 
 //Adding Statistics for user review of players for selection purposes
-function addStats(g1, g2, g3) {
+function addStats(groups) {
     players.map(item => {
-        if (g1.includes(item.Name)) {
+        if (groups[0].includes(item.Name)) {
             firstGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS)
         }
-        else if (g2.includes(item.Name)) {
+        else if (groups[1].includes(item.Name)) {
             secondGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS)
         }
-        else if (g3.includes(item.Name)) {
+        else if (groups[2].includes(item.Name)) {
             thirdGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS)
         }
     })
     playerSelector(firstGroupStats, secondGroupStats, thirdGroupStats)
 }
 
-//Asking the user to select players from each group based on their prefferred specifications, then building an object of those players.
+//Asking the user to select players from each group based on their prefferred specifications, then building an array of those players.
 function playerSelector(g1, g2, g3) {
     inquirer.prompt([
         {
@@ -141,6 +155,7 @@ function playerSelector(g1, g2, g3) {
             type: "list",
             name: "G1",
             choices: g1.map(item => item)
+
         }, {
             message: "Which player do you want from GROUP 2 that matches your preferred specifications?",
             type: "list",
@@ -158,11 +173,12 @@ function playerSelector(g1, g2, g3) {
         console.log("Your top 3 players are as follows: ")
         console.log(answers)
         fullTeam.push(answers);
-        chooseFinalFive(remainingPicks);
+        initialInquiry(remainingPicks);
     })
 }
 
 //Creating a list of the remaining top prospects and calling the final inquirer prompt to select the last 5 players
+//Validation for ensuring only 5 players are selected
 const validateFiveSelected = (input) => {
     let length = input.length;
     let tooMany = (length - 5);
@@ -176,6 +192,7 @@ const validateFiveSelected = (input) => {
     return true;
 };
 
+//Actual prompt for inquirer to select final 5 players
 function chooseFinalFive() {
     inquirer.prompt([
         {
@@ -191,5 +208,7 @@ function chooseFinalFive() {
         console.log("Your full team is as follows: ")
         console.log(fullTeam);
     })
-    
+
 }
+
+initialInquiry()
