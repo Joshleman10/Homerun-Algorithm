@@ -32,40 +32,46 @@ const groupSelections =
     ]]
 
 let possibleTopPicks = [[], [], []];
-
 let fullTeam = [];
-let prospects = [];
+let topProspects = [];
+let remainingPicks = [];
 let firstGroupStats = [];
 let secondGroupStats = [];
 let thirdGroupStats = [];
 let hr = 0;
 let ab = 0;
 let ops = 0;
-let remainingPicks = [];
 const grpSelArr = [groupSelections[0], groupSelections[1], groupSelections[2]];
 const mergedGrpSelArr = [].concat.apply([], grpSelArr);
-players.forEach(item => {
-    mergedGrpSelArr.includes(item.Name) ? "" : remainingPicks.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS);
-})
-//write functions to select top hitters
-function mostHR(hitters){
-    hitters.Stats.HomeRuns.map(item => {values.sort((a,b) => b-a).slice(0,5)})
-}
-function mostAB(hitters){
-    hitters.Stats.AB.map(item => {values.sort((a,b) => b-a).slice(0,5)})
-}
-function mostOPS(hitters){
-    hitters.Stats.OPS.map(item => {values.sort((a,b) => b-a).slice(0,5)})
-}
 
+// Exctracting players from the players object that are not included in the inital 3 mandatory pick groups or "groupSelections" object
+players.forEach(item => {
+    if (mergedGrpSelArr.includes(item.Name)) {
+        return;
+    }
+    else {
+        //Giving the remaining players a "score" using: ((HR * 10) + (AB*2) + (OPS*1000)) / 3
+        let avgPlrScore = ((item.Stats.HomeRuns * 10) + (item.Stats.AB * 2) + (item.Stats.OPS * 1000)) / 3
+        remainingPicks.push({
+            name: item.Name,
+            value: {
+                "HR": item.Stats.HomeRuns,
+                "AB": item.Stats.AB,
+                "OPS": item.Stats.OPS,
+                "PlayerScore": avgPlrScore.toFixed(1)
+            }
+        })
+    }
+    //sorting remaining picks by highest to lowest player score to use in a list later
+    remainingPicks.sort((a, b) => (b.value.PlayerScore) - (a.value.PlayerScore));
+})
 //Asking the user to set parameters for the players they would like to select
-function initialInquiry(){
 inquirer.prompt([
     {
         message: "At least how many HR do you want your picks to have from last season?",
         type: "list",
         name: "HR",
-        choices: 
+        choices: [40, 35, 30, 25]
     }, {
         message: "At least how many at bats do you want your picks to have from last season?",
         type: "list",
@@ -85,19 +91,19 @@ inquirer.prompt([
     answers.OPS ? ops = answers.OPS : 0
     pickPreferences(players)
 })
-}
 
-//Creating prospects using the preferred specifications set by the first round of inquirer questions
+
+//Creating topProspects using the preferred specifications set by the first round of inquirer questions
 function pickPreferences(playersToSort) {
     playersToSort.map(item => {
         if (item.Stats.AB > ab && item.Stats.HomeRuns > hr && item.Stats.OPS > ops) {
-            prospects.push(item.Name)
+            topProspects.push(item.Name)
         }
     })
-    compareToGroups(prospects);
+    compareToGroups(topProspects);
 }
 
-//Comparing prospects that meet the user's preferred player specifications
+//Comparing topProspects that meet the user's preferred player specifications
 function compareToGroups(topProspects) {
     topProspects.map(item => {
         if (groupSelections[0].includes(item)) {
@@ -114,34 +120,34 @@ function compareToGroups(topProspects) {
 }
 
 //Ensuring all arrays have a value, if not, return the entire group for user discernment
-function groupContentValidator(){
-        let ptpLenthgs = possibleTopPicks.map(item => item.length)
-        if (ptpLenthgs.includes(0)) {
-            possibleTopPicks.map((group, index) => {
-                if (group.length === 0) {
-                    groupSelections[index].map(item => {
-                        possibleTopPicks[index].push(item);
-                    })
-                    console.log("*****No players in group #" + (index+1) + " matched the criterea you selected. Returning all of group #" + (index+1) + " for evaluation*****")
-                    addStats(possibleTopPicks)
-                }
-                else { return }
-            })
-        }
-        else { addStats(possibleTopPicks) }
+function groupContentValidator() {
+    let ptpLenthgs = possibleTopPicks.map(item => item.length)
+    if (ptpLenthgs.includes(0)) {
+        possibleTopPicks.map((group, index) => {
+            if (group.length === 0) {
+                groupSelections[index].map(item => {
+                    possibleTopPicks[index].push(item);
+                })
+                console.log("*****NO PLAYERS IN GROUP #" + (index + 1) + " MATCHED THE CRITERIA YOU SELECTED. RETURNING ALL OF GROUP #" + (index + 1) + " FOR EVALUATION*****")
+                addStats(possibleTopPicks)
+            }
+            else { return }
+        })
+    }
+    else { addStats(possibleTopPicks) }
 }
 
 //Adding Statistics for user review of players for selection purposes
 function addStats(groups) {
     players.map(item => {
         if (groups[0].includes(item.Name)) {
-            firstGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS)
+            firstGroupStats.push(item.Name + " | HR: " + item.Stats.HomeRuns + " | AB: " + item.Stats.AB + " | OPS: " + item.Stats.OPS)
         }
         else if (groups[1].includes(item.Name)) {
-            secondGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS)
+            secondGroupStats.push(item.Name + " | HR: " + item.Stats.HomeRuns + " | AB: " + item.Stats.AB + " | OPS: " + item.Stats.OPS)
         }
         else if (groups[2].includes(item.Name)) {
-            thirdGroupStats.push(item.Name + " HR: " + item.Stats.HomeRuns + " AB: " + item.Stats.AB + " OPS: " + item.Stats.OPS)
+            thirdGroupStats.push(item.Name + " | HR: " + item.Stats.HomeRuns + " | AB: " + item.Stats.AB + " | OPS: " + item.Stats.OPS)
         }
     })
     playerSelector(firstGroupStats, secondGroupStats, thirdGroupStats)
@@ -173,42 +179,41 @@ function playerSelector(g1, g2, g3) {
         console.log("Your top 3 players are as follows: ")
         console.log(answers)
         fullTeam.push(answers);
-        initialInquiry(remainingPicks);
+        chooseFinalFive();
     })
 }
 
-//Creating a list of the remaining top prospects and calling the final inquirer prompt to select the last 5 players
+//Creating a list of the remaining top topProspects and calling the final inquirer prompt to select the last 5 players
 //Validation for ensuring only 5 players are selected
 const validateFiveSelected = (input) => {
     let length = input.length;
     let tooMany = (length - 5);
     let tooFew = (5 - length);
     if (length > 5) {
-        return 'You have selected ' + tooMany + ' too many player(s).  Please select 5 players.';
+        return 'YOU HAVE SELECTED ' + tooMany + ' TOO MANY PLAYER(S).  PLEASE SELECT 5 PLAYERS.';
     }
     else if (length < 5) {
-        return ('You have selected too few players.  Please select ' + tooFew + ' more player(s).');
+        return ('YOU HAVE SELECTED TOO FEW PLAYERS.  PLEASE SELECT ' + tooFew + ' MORE PLAYER(S).');
     }
     return true;
 };
 
 //Actual prompt for inquirer to select final 5 players
 function chooseFinalFive() {
+    console.log("*****THE REMAINING PLAYERS HAVE BEEN GIVEN A SCORE BASED ON: ((HR * 10) + (AB*2) + (OPS*1000)) / 3*****")
     inquirer.prompt([
         {
             message: "Select 5 Remaining Players to fill out your team:",
             type: "checkbox",
             name: "remaining",
-            choices: remainingPicks.map(item => item),
+            choices: remainingPicks.map(item => item.name + " | PlayerScore: " + item.value.PlayerScore + " | HR: " + item.value.HR + " | AB: " + item.value.AB + " | OPS: " + item.value.OPS ),
             validate: validateFiveSelected
         }
 
     ]).then(function (answers) {
         fullTeam.push(answers)
-        console.log("Your full team is as follows: ")
+        console.log("YOUR FULL TEAM IS AS FOLLOWS: ")
         console.log(fullTeam);
     })
 
 }
-
-initialInquiry()
